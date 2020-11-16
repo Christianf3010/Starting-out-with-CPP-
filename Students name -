@@ -1,0 +1,57 @@
+
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+
+    // Variables
+    string firstStudent;
+    string name;
+    string lastStudent;
+    string file_name;
+
+    cout << "What is the name of the file? ";
+    cin >> file_name;
+    {
+        if (file_name == "LineUp.txt") {
+            cout << "What is the first students name? " << endl;
+            cin >> firstStudent;
+            cout << "what is the last studetns name? " << endl;
+            cin >> lastStudent;
+        }
+        else {
+            (file_name != "LineUp.txt")
+                cout << "please input the correct file" << endl;
+            system("pause");
+            return 0;
+        }
+        //Inport files 
+        ifstream inputFile("LineUp.txt");
+        // Get Names 
+        inputFile >> name;
+        firstStudent = name;
+        lastStudent = name;
+        //use a for loop and read names of rest
+        //of students from file
+        while (inputFile >> name) {
+            //on each iteration, update first
+            //and last accordingly
+            if (name < firstStudent)
+                firstStudent = name;
+
+            if (name > lastStudent)
+                lastStudent = name;
+        }
+
+        //display first and last in line
+        cout << "First student in line is: " << firstStudent;
+        cout << "Last student in line is: " << lastStudent;
+        inputFile.close();
+        system("pause");
+        return 0;
+    }
+}
