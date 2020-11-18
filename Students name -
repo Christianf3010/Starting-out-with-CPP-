@@ -1,3 +1,7 @@
+//Christian Fourqurean 
+
+// This program reads the list of names from a file while asking for the correct file. 
+
 
 #include <iostream>
 #include <string>
@@ -13,30 +17,34 @@ int main()
     string name;
     string lastStudent;
     string file_name;
+    int numOfStudents;
+
+    //Inputs file 
+    ifstream inputFile("LineUp.txt");
 
     cout << "What is the name of the file? ";
     cin >> file_name;
+
     {
-        if (file_name == "LineUp.txt") {
-            cout << "What is the first students name? " << endl;
-            cin >> firstStudent;
-            cout << "what is the last studetns name? " << endl;
-            cin >> lastStudent;
+
+        while (file_name == "LineUp.txt")
+        {
+            break;
         }
-        else {
-            (file_name != "LineUp.txt")
-                cout << "please input the correct file" << endl;
+        if (file_name != "LineUp.txt") {
+            cout << "please input the correct file" << endl;
             system("pause");
             return 0;
         }
-        //Inport files 
-        ifstream inputFile("LineUp.txt");
+
         // Get Names 
         inputFile >> name;
         firstStudent = name;
         lastStudent = name;
         //use a for loop and read names of rest
         //of students from file
+
+        firstStudent = lastStudent = name;
         while (inputFile >> name) {
             //on each iteration, update first
             //and last accordingly
@@ -47,9 +55,9 @@ int main()
                 lastStudent = name;
         }
 
-        //display first and last in line
-        cout << "First student in line is: " << firstStudent;
-        cout << "Last student in line is: " << lastStudent;
+        //Display names
+        cout << "First student in line is: " << firstStudent << endl;
+        cout << "Last student in line is: " << lastStudent << endl;
         inputFile.close();
         system("pause");
         return 0;
