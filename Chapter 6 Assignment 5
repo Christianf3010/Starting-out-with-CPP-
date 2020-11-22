@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+int GetTotalEmployees();
+int GetTotalDaysEmployeesMissed(int totalEmployees);
+double GetTotalDaysEmployeesMissed(int totalEmployees, int totalDaysEmployeesMissed);
+
+
+
+// main function that displays totals 
+
+int main() {
+   int totalEmployees, totalDaysEmployeesMissed;
+   double average;
+   totalEmployees = GetTotalEmployees();
+   totalDaysEmployeesMissed = GetTotalDaysEmployeesMissed(totalEmployees);
+   if (totalEmployees > 0) {
+       average = GetTotalDaysEmployeesMissed(totalEmployees, totalDaysEmployeesMissed);
+       cout << "The average of days absent: " << average << endl; 
+       cout << "The total of amount days missed by employees was: " << totalDaysEmployeesMissed << endl; 
+    
+   }
+}
+
+int GetTotalEmployees()
+{
+   // local variable declaration
+   int totalEmployees;
+   cout << "Enter the number of employees in the company: ";
+   cin >> totalEmployees;
+   if (totalEmployees < 1) {
+       cout << "Please enter nummber of employees greater than 1\n";
+   }
+
+   return totalEmployees;
+}
+
+// Total days missed by employee 
+int GetTotalDaysEmployeesMissed(int totalEmployees)
+{
+   int totalDaysEmployeesMissed=0,missedDayofEmployee;
+  
+   for (int i = 1; i <= totalEmployees && totalEmployees > 0; ) {
+       cout << "Enter the number of days " << i << " employee missed during past year: ";
+       cin >> missedDayofEmployee;
+       if (missedDayofEmployee >= 0){
+           i++;
+       }
+       else {
+           cout << "Please enter days a positive number";
+       }
+       totalDaysEmployeesMissed = totalDaysEmployeesMissed + missedDayofEmployee;
+   }
+   return totalDaysEmployeesMissed;
+}
+
+// averaging all of employees days missed 
+
+double GetTotalDaysEmployeesMissed(int totalEmployees,int totalDaysEmployeesMissed)
+{
+   double average;
+   average = (double)totalDaysEmployeesMissed / (double)totalEmployees;
+   return average;
+}
